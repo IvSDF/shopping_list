@@ -34,6 +34,22 @@ services:
       - 3309:3306
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --innodb_use_native_aio=0
     container_name: shoppingList_db
+    
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      UPLOAD_LIMIT: 300M
+      MYSQL_ROOT_PASSWORD: root
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
 
 volumes:
   db:

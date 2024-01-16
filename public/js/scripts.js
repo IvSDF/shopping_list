@@ -39,7 +39,6 @@ $(document).ready(function() {
 		renderList();
 	});
 
-
 	$(document).on('click', '#applyFilter', function() {
 		var formData = $('#filterForm').serialize();
 		$.ajax({
